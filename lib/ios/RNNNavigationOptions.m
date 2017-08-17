@@ -24,6 +24,7 @@ const NSInteger BLUR_STATUS_TAG = 78264801;
 	self.tabBadge = [navigationOptions objectForKey:@"tabBadge"];
 	self.topBarTextFontSize = [navigationOptions objectForKey:@"topBarTextFontSize"];
 	self.topBarNoBorder = [navigationOptions objectForKey:@"topBarNoBorder"];
+	self.screenBackgroundImageName = [navigationOptions objectForKey:@"screenBackgroundImageName"];
 
 	return self;
 }
@@ -134,6 +135,11 @@ const NSInteger BLUR_STATUS_TAG = 78264801;
 			}
 		}
 	}
-	
+
+	if (self.screenBackgroundImageName) {
+		UIImage *image = [UIImage imageNamed: self.screenBackgroundImageName];
+		viewController.view.layer.contents = (__bridge id _Nullable)(image.CGImage);
+	}
+
 }
 @end
